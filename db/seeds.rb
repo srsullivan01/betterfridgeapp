@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Fridge.destroy_all
+
+icebox = Fridge.create(location: "kitchen", brand: "Ikea", size: 12, has_food: true, has_drink: true)
+
+icebox.food  = [
+    Food.create(fridge_id: icebox.id, name: "apple", weight_in_pounds: 1 , vegan: true),
+    Food.create(fridge_id: icebox.id , name: "pineapple", weight_in_pounds: 3 , vegan: true),
+    Food.create(fridge_id: icebox.id, name: "cold pizza", weight_in_pounds: 5, vegan: false),
+    Food.create(fridge_id: icebox.id, name: "seaweed", weight_in_pounds: 1 , vegan: true),
+    Food.create(fridge_id: icebox.id, name: "hot dog", weight_in_pounds: 1 , vegan: false)
+  ]
+icebox.drink = [
+    Drink.create(fridge_id: icebox.id, name: "soy milk", size_in_ounces: 12, alcoholic: false),
+    Drink.create(fridge_id: icebox.id, name: "mai tais", size_in_ounces: 10, alcoholic: true)
+  ]

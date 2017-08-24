@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824195053) do
+ActiveRecord::Schema.define(version: 20170824213108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,24 @@ ActiveRecord::Schema.define(version: 20170824195053) do
     t.index ["fridge_id"], name: "index_foods_on_fridge_id"
   end
 
+  create_table "fridge_drinks", force: :cascade do |t|
+    t.bigint "fridge_id"
+    t.bigint "drink_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drink_id"], name: "index_fridge_drinks_on_drink_id"
+    t.index ["fridge_id"], name: "index_fridge_drinks_on_fridge_id"
+  end
+
+  create_table "fridge_foods", force: :cascade do |t|
+    t.bigint "fridge_id"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_fridge_foods_on_food_id"
+    t.index ["fridge_id"], name: "index_fridge_foods_on_fridge_id"
+  end
+
   create_table "fridges", force: :cascade do |t|
     t.string "location"
     t.string "brand"
@@ -47,4 +65,7 @@ ActiveRecord::Schema.define(version: 20170824195053) do
 
   add_foreign_key "drinks", "fridges"
   add_foreign_key "foods", "fridges"
+  add_foreign_key "fridge_drinks", "drinks"
+  add_foreign_key "fridge_foods", "foods"
+  add_foreign_key "fridge_foods", "fridges"
 end

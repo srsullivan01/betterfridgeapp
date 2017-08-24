@@ -1,3 +1,4 @@
 class Food < ApplicationRecord
-  belongs_to :fridge
+  has_many :fridge_foods
+  has_many :fridges, through :fridge_foods
 end
