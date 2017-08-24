@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  name: MyString
+  weight_in_pounds: 1
+  vegan: false
+
+two:
+  references: 
+  name: MyString
+  weight_in_pounds: 1
+  vegan: false
